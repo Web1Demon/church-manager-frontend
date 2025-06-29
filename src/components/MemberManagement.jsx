@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "./ui/dropdown-menu";
 import { Search, Plus, Mail, Phone, MapPin, Users, Filter, MoreHorizontal, Edit, Trash2, UserPlus, Eye, MessageCircle } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
+import PageTitle from "./PageTitle";
 
 const MemberManagement = () => {
   const { toast } = useToast();
@@ -136,15 +137,20 @@ const MemberManagement = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Modern Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
           <div className="space-y-2">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Member Directory
-            </h1>
-            <p className="text-slate-600 text-lg">Manage and connect with your church community</p>
+            <PageTitle 
+            size="medium" 
+            align="center" 
+            className="mb-8"
+            showUnderline
+            >
+            Membership Management
+          </PageTitle>
+            <p className="text-theme-secondary text-lg">Manage and connect with your church community</p>
           </div>
           
             <DialogTrigger onClick={() => setIsAddMemberOpen(true)} className="bg-gradient-to-r  from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 px-6 py-3 rounded-xl">
@@ -154,7 +160,7 @@ const MemberManagement = () => {
               </div>
             </DialogTrigger>
           <Dialog  open={isAddMemberOpen} onOpenChange={setIsAddMemberOpen} >
-              <DialogContent className="sm:max-w-[500px] bg-white/95 backdrop-blur-sm border-0 shadow-2xl">
+              <DialogContent className="sm:max-w-[500px]">
               <DialogHeader className="space-y-3">
                 <DialogTitle className="text-2xl font-bold text-slate-800">Add New Member</DialogTitle>
                 <DialogDescription className="text-slate-600">
@@ -164,20 +170,20 @@ const MemberManagement = () => {
               <div className="grid gap-6 py-6">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-slate-700 font-medium">Full Name</Label>
-                  <Input id="name" placeholder="Enter full name" className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20" />
+                  <Input id="name" placeholder="Enter full name" className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 text-black" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-slate-700 font-medium">Email Address</Label>
-                  <Input id="email" type="email" placeholder="member@example.com" className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20" />
+                  <Input id="email" type="email" placeholder="member@example.com" className="bg-white border-slate-20 text-black0 focus:border-blue-400 focus:ring-blue-400/20 text-black" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone" className="text-slate-700 font-medium">Phone Number</Label>
-                  <Input id="phone" placeholder="(555) 123-4567" className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20" />
+                  <Input id="phone" placeholder="(555) 123-4567" className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 text-black" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="group" className="text-slate-700 font-medium">Ministry Group</Label>
                   <Select>
-                    <SelectTrigger className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20">
+                    <SelectTrigger className="bg-white border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 text-black">
                       <SelectValue placeholder="Select a ministry group" />
                     </SelectTrigger>
                     <SelectContent>
@@ -191,7 +197,7 @@ const MemberManagement = () => {
                 </div>
               </div>
               <div className="flex justify-end space-x-3 pt-4 border-t">
-                <Button variant="outline" onClick={() => setIsAddMemberOpen(false)} className="px-6">
+                <Button variant="outline" onClick={() => setIsAddMemberOpen(false)} className="px-6 bg-black">
                   Cancel
                 </Button>
                 <Button onClick={handleAddMember} className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-6">
@@ -204,7 +210,7 @@ const MemberManagement = () => {
 
         {/* Edit Member Dialog */}
         <Dialog open={isEditMemberOpen} onOpenChange={setIsEditMemberOpen}>
-          <DialogContent className="sm:max-w-[500px] bg-white/95 backdrop-blur-sm border-0 shadow-2xl">
+          <DialogContent className="md:min-w-lg sm:max-w-[500px]">
             <DialogHeader className="space-y-3">
               <DialogTitle className="text-2xl font-bold text-slate-800">Edit Member</DialogTitle>
               <DialogDescription className="text-slate-600">
@@ -267,12 +273,12 @@ const MemberManagement = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-theme-primary h-5 w-5" />
               <Input
                 placeholder="Search members by name or email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 rounded-xl shadow-sm text-lg"
+                className="pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 rounded-xl shadow-sm text-lg text-theme-primary"
               />
             </div>
           </div>
@@ -297,8 +303,8 @@ const MemberManagement = () => {
             Filter
           </Button>
           <Select value={filterStatus} onValueChange={setFilterStatus}>
-            <SelectTrigger className="w-48 bg-white border-slate-200">
-              <SelectValue />
+            <SelectTrigger className="w-48 border-slate-200 ">
+              <SelectValue className="text-primary" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Members</SelectItem>
@@ -311,7 +317,7 @@ const MemberManagement = () => {
         {/* Modern Members Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredMembers.map((member) => (
-            <Card key={member.id} className="group bg-white/70 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden">
+            <Card key={member.id} className="group  backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-300 rounded-2xl overflow-hidden">
               <CardHeader className="pb-4 relative">
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <DropdownMenu>
@@ -370,13 +376,13 @@ const MemberManagement = () => {
                 <div className="flex items-start space-x-4">
                   <Avatar className="h-16 w-16 ring-4 ring-white shadow-lg">
                     <AvatarImage src={member.avatar} className="object-cover" />
-                    <AvatarFallback className="bg-gradient-to-br from-blue-400 to-indigo-500 text-white font-semibold text-lg">
+                    <AvatarFallback className=" text-white font-semibold text-lg">
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
-                    <CardTitle className="text-xl font-bold text-slate-800 truncate">{member.name}</CardTitle>
-                    <CardDescription className="text-slate-500 mt-1">
+                    <CardTitle className="text-xl font-bold truncate">{member.name}</CardTitle>
+                    <CardDescription className="text-theme-primary mt-1">
                       Member since {member.joinDate}
                     </CardDescription>
                     <Badge variant="outline" className="mt-2 bg-green-50 text-green-700 border-green-200">
@@ -388,22 +394,22 @@ const MemberManagement = () => {
               
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-3 text-slate-600">
-                    <Mail className="h-4 w-4 text-slate-400" />
+                  <div className="flex items-center space-x-3 text-theme-primary">
+                    <Mail className="h-4 w-4 text-theme-primary" />
                     <span className="text-sm truncate">{member.email}</span>
                   </div>
-                  <div className="flex items-center space-x-3 text-slate-600">
-                    <Phone className="h-4 w-4 text-slate-400" />
+                  <div className="flex items-center space-x-3 text-theme-primary">
+                    <Phone className="h-4 w-4 text-theme-primary" />
                     <span className="text-sm">{member.phone}</span>
                   </div>
-                  <div className="flex items-start space-x-3 text-slate-600">
-                    <MapPin className="h-4 w-4 text-slate-400 mt-0.5 flex-shrink-0" />
+                  <div className="flex items-start space-x-3 text-theme-primary">
+                    <MapPin className="h-4 w-4 text-theme-primary mt-0.5 flex-shrink-0" />
                     <span className="text-sm leading-relaxed">{member.address}</span>
                   </div>
                 </div>
                 
                 <div className="pt-2">
-                  <p className="text-sm font-medium text-slate-700 mb-3">Ministry Groups</p>
+                  <p className="text-sm font-medium text-theme-primary mb-3">Ministry Groups</p>
                   <div className="flex flex-wrap gap-2">
                     {member.groups.map((group, index) => (
                       <Badge key={index} variant="secondary" className="bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">

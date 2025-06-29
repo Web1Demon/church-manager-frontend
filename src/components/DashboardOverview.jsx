@@ -1,6 +1,7 @@
 import { Users, DollarSign, Calendar, TrendingUp, Plus, Clock, MapPin } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from './ui/card';
 import { Button } from './ui/Button';
+import PageTitle from './PageTitle';
 
 const DashboardOverview = () => {
 
@@ -53,7 +54,18 @@ const DashboardOverview = () => {
   ];
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6  p-6">
+            <div className="space-y-2">
+            <PageTitle 
+            size="medium" 
+            align="" 
+            className="mb-8"
+            showUnderline
+          >
+            Dashboard
+          </PageTitle>
+            <p className="text-theme-secondary text-lg">Manage and connect with your church community</p>
+          </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {/* Statistics Cards */}
                 {stats.map((stat, index) => (
@@ -67,8 +79,8 @@ const DashboardOverview = () => {
                             </div>
                         </CardHeader>
                         <CardContent>
-                            <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
-                            <p className="text-xs text-gray-500 mt-1">{stat.change}</p>
+                            <div className="text-2xl font-bold">{stat.value}</div>
+                            <p className="text-xs mt-1">{stat.change}</p>
                         </CardContent>
                     </Card>
                 ))}
@@ -113,10 +125,7 @@ const DashboardOverview = () => {
                 <CardHeader>
                     <CardTitle className="flex items-center justify-between">
                     Upcoming Events
-                    <Button variant="outline" size="sm">
-                        <Plus className="h-4 w-4 mr-1" />
-                        Add Event
-                    </Button>
+                   
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
