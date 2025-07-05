@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback,  } from "./ui/avatar";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Users, Plus, Search, Mail, Phone, UserCheck, UserX } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
@@ -168,7 +168,6 @@ const AttendeeManagement = ({ event }) => {
             <div key={attendee.id} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
               <div className="flex items-center space-x-3">
                 <Avatar>
-                  <AvatarImage src={attendee.avatar} />
                   <AvatarFallback>{getInitials(attendee.name)}</AvatarFallback>
                 </Avatar>
                 <div>

@@ -8,12 +8,12 @@ import MemberManagement from "../components/MemberManagement";
 import FinanceTracking from "../components/FinanceTracking";
 import EventManagement from "../components/EventManagement";
 import DashboardOverview from "../components/DashboardOverview";
-import DarkModeToggle from "../components/DarkModeToggle";
-//import { useNavigate } from "react-router-dom";
+// import DarkModeToggle from "../components/DarkModeToggle";
+import { useNavigate } from "react-router-dom";
   
 const Index = () => {
     const [activeTab, setActiveTab] = useState("dashboard");
-  //  const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const renderContent = () => {
     switch (activeTab) {
@@ -64,11 +64,12 @@ const Index = () => {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
               </Button>
 
-              <DarkModeToggle />
+              
 
               <Button
                 variant="outline"
                 size="icon"
+                onClick={() => navigate("/settings")}
                 className="border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl"
               >
                 <Settings className="h-4 w-4" />

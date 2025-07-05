@@ -353,7 +353,7 @@ const FinanceTracking = () => {
                 <Button variant="outline" onClick={() => setIsAddTransactionOpen(false)}>
                   Cancel
                 </Button>
-                <Button onClick={handleAddTransaction} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={handleAddTransaction} className="bg-blue-600 hover:bg-blue-700 text-white">
                   Add Transaction
                 </Button>
               </div>

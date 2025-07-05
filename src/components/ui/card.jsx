@@ -45,7 +45,7 @@ const CardDescription = ({ children, className = '', ...props }) => {
   return (
     <p
       className={`${isDark ? 'text-gray-100' : 'text-gray-600'} ${className}`}
-      {...props}
+      {...props}  
     >
       {children}
     </p>

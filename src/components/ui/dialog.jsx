@@ -22,7 +22,7 @@ function Dialog({ open, onOpenChange, children, className, ...props }) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center ">
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black/50" 
@@ -30,13 +30,12 @@ function Dialog({ open, onOpenChange, children, className, ...props }) {
       />
       
       {/* Dialog Content Container */}
-      <div className="relative bg-white rounded-lg shadow-lg max-w-xl mx-4 p-6">
+      <div className="relative bg-white rounded-lg shadow-lg max-w-2xl mx-4 p-6">
         {/* Close Button */}
         <button
           onClick={() => onOpenChange(false)}
           className="absolute right-4 top-4 opacity-70 hover:opacity-100"
         >
-          <X className="h-4 w-4" />
         </button>
         
         {children}
@@ -68,13 +67,12 @@ const DialogOverlay = ({ className, ...props }) => (
 
 const DialogContent = ({ className, children, ...props }) => (
   <div 
-    className={cn("w-full", className)} 
+    className={cn("w-xl", className)} 
     {...props}
   >
     <div className="p-6">
       {children}
       <DialogClose className="absolute right-4 top-4 opacity-70 hover:opacity-100">
-        <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </DialogClose>
     </div>
